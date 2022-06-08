@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -17,23 +20,38 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: Row(children: <Widget>[
                 Expanded(
-                  child: ReusableCard(col: Color(0XFF1D1E33),),
+                  child: ReusableCard(
+                    col: Color(0XFF1D1E33),
+                    cardChild:  IconContent(icon: FontAwesomeIcons.mars,gender: 'MALE',),
+
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(col: Color(0XFF1D1E33),),
+                  child: ReusableCard(
+                    col: Color(0XFF1D1E33),
+                    cardChild: IconContent(icon: FontAwesomeIcons.venus,gender: 'FEMALE',),
+                  ),
                 ),
               ]),
             ),
             Expanded(
-              child: ReusableCard(col: Color(0XFF1D1E33),),
+              child: ReusableCard(
+                col: Color(0XFF1D1E33),
+                cardChild: IconContent(icon: FontAwesomeIcons.mars,gender: 'MALE',),
+              ),
             ),
             Expanded(
               child: Row(children: <Widget>[
                 Expanded(
-                  child: ReusableCard(col: Color(0XFF1D1E33),)
-                ),
+                    child: ReusableCard(
+                  col: Color(0XFF1D1E33),
+                      cardChild: IconContent(icon: FontAwesomeIcons.mars,gender: 'MALE',),
+                )),
                 Expanded(
-                  child: ReusableCard(col: Color(0XFF1D1E33),),
+                  child: ReusableCard(
+                    col: Color(0XFF1D1E33),
+                    cardChild: IconContent(icon: FontAwesomeIcons.mars,gender: 'MALE',),
+                  ),
                 ),
               ]),
             ),
@@ -48,13 +66,46 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class IconContent extends StatelessWidget {
+  IconContent({required this.gender,required this.icon});
+  final IconData icon;
+  final String gender;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          icon,
+          size: 80.0,
+        ),
+        SizedBox(
+          height: 15.0,
+        ),
+        Text(
+          gender,
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Color(0xFF8D8E98),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class ReusableCard extends StatelessWidget {
-  Color col;
-  ReusableCard({required this.col});
+  ReusableCard({required this.col, required this.cardChild});
+
+  final Color col;
+  final Widget cardChild;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         color: col,
