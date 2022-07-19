@@ -2,7 +2,7 @@ import '../components/icon_content.dart';
 import '../components/reusable_card.dart';
 import 'package:flutter/material.dart';
 import '../components/round_icon_button.dart';
-import'package:bmi_calculator_flutter/screens/results_page.dart';
+import 'package:bmi_calculator_flutter/screens/results_page.dart';
 import 'package:bmi_calculator_flutter/calculator_brain.dart';
 import 'package:bmi_calculator_flutter/components/bottom_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,7 +19,7 @@ class _InputPageState extends State<InputPage> {
   gender selectGender = gender.male;
   int height = 180;
   int weight = 30;
-  int age=18;
+  int age = 18;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,40 +31,40 @@ class _InputPageState extends State<InputPage> {
         children: <Widget>[
           Expanded(
             child: Row(
-                children: <Widget>[
-              Expanded(
-                child: ReusableCard(
-                  pressHandler: () {
-                    setState(() {
-                      selectGender = gender.male;
-                    });
-                  },
-                  col: selectGender == gender.male
-                      ? kActiveCardColor
-                      : kInactiveCardColor,
-                  cardChild: IconContent(
-                    icon: FontAwesomeIcons.mars,
-                    gender: 'MALE',
+              children: <Widget>[
+                Expanded(
+                  child: ReusableCard(
+                    pressHandler: () {
+                      setState(() {
+                        selectGender = gender.male;
+                      });
+                    },
+                    col: selectGender == gender.male
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.mars,
+                      gender: 'MALE',
+                    ),
                   ),
-                ),
-              ), //male
-              Expanded(
-                child: ReusableCard(
-                  pressHandler: () {
-                    setState(() {
-                      selectGender = gender.female;
-                    });
-                  },
-                  col: selectGender == gender.female
-                      ? kActiveCardColor
-                      : kInactiveCardColor,
-                  cardChild: IconContent(
-                    icon: FontAwesomeIcons.venus,
-                    gender: 'FEMALE',
+                ), //male
+                Expanded(
+                  child: ReusableCard(
+                    pressHandler: () {
+                      setState(() {
+                        selectGender = gender.female;
+                      });
+                    },
+                    col: selectGender == gender.female
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      gender: 'FEMALE',
+                    ),
                   ),
-                ),
-              ), //female
-             ],
+                ), //female
+              ],
             ),
           ),
           Expanded(
@@ -147,13 +147,13 @@ class _InputPageState extends State<InputPage> {
                               width: 10.0,
                             ),
                             RoundIconButton(
-                                icon: FontAwesomeIcons.plus,
-                                onPressed: () {
-                                  setState(() {
-                                    weight++;
-                                  });
-                                },
-                                ),
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -181,7 +181,7 @@ class _InputPageState extends State<InputPage> {
                               icon: FontAwesomeIcons.minus,
                               onPressed: () {
                                 setState(
-                                      () {
+                                  () {
                                     age--;
                                   },
                                 );
@@ -206,28 +206,26 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-            BottomButton(
-              buttonTitle: 'CALCULATE',
-              onTap: () {
-                 CalculatorBrain calc =
-                 CalculatorBrain(height: height, weight: weight);
+          BottomButton(
+            buttonTitle: 'CALCULATE',
+            onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ResultsPage(
-                       bmiResult: calc.calculateBMI(),
-                      resultText: calc.getResult(),
-                      interpretation: calc.getInterpretation(),
-                    ),
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
                   ),
-                );
-              },
-            ),
-
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
   }
 }
-
